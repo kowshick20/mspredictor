@@ -1,0 +1,33 @@
+Model,Train Accuracy,Test Accuracy,Train F1 score,Test F1 score
+"SVC(gamma='auto', probability=True)",0.6830556684274685,0.6525802519301097,0.6427480916030535,0.6072576940744144
+DecisionTreeClassifier(),1.0,0.7452255180820805,1.0,0.736886277801091
+RandomForestClassifier(n_estimators=10),0.9891642963564946,0.7696058512799675,0.9889258028792913,0.7701661937576004
+"GridSearchCV(cv=5, estimator=RandomForestClassifier(n_estimators=10),
+             param_grid={'bootstrap': [True, False],
+                         'max_depth': [10, 15, 20, 25],
+                         'n_estimators': [10, 15, 20, 25, 30]},
+             return_train_score=True)",0.9989164296356494,0.794392523364486,0.9988861041492622,0.7859560067681894
+GaussianNB(),0.5799810375186238,0.5615603413246648,0.6118412817624234,0.5984369184964644
+MLPClassifier(max_iter=500),0.7205742922931058,0.6525802519301097,0.7026949128116443,0.6261477918670748
+"XGBClassifier(base_score=0.5, booster='gbtree', colsample_bylevel=1,
+              colsample_bynode=1, colsample_bytree=1, gamma=0, gpu_id=-1,
+              importance_type='gain', interaction_constraints='',
+              learning_rate=0.300000012, max_delta_step=0, max_depth=6,
+              min_child_weight=1, missing=nan, monotone_constraints='()',
+              n_estimators=100, n_jobs=4, num_parallel_tree=1, random_state=0,
+              reg_alpha=0, reg_lambda=1, scale_pos_weight=1, subsample=1,
+              tree_method='exact', validate_parameters=1, verbosity=None)",0.9441961262359474,0.7935798455912231,0.9429046563192904,0.7860151642796966
+"BaggingClassifier(base_estimator=DecisionTreeClassifier(random_state=1),
+                  max_features=0.8, n_estimators=100)",1.0,0.8004876066639578,1.0,0.792213288192975
+"GridSearchCV(cv=5,
+             estimator=BaggingClassifier(base_estimator=DecisionTreeClassifier(random_state=1),
+                                         max_features=0.8, n_estimators=100),
+             param_grid={'base_estimator__max_depth': [30, 40, 50],
+                         'max_samples': [0.05, 0.1, 0.2, 0.5, 0.75, 0.8, 1]},
+             return_train_score=True)",1.0,0.798049573344169,1.0,0.7903838043019822
+"BaggingClassifier(base_estimator=KNeighborsClassifier(), max_features=0.8,
+                  n_estimators=100)",0.8679398618447786,0.6822429906542056,0.8621518450445357,0.6623488773747841
+"GridSearchCV(cv=5,
+             estimator=BaggingClassifier(base_estimator=KNeighborsClassifier(),
+                                         max_features=0.8, n_estimators=100),
+             param_grid={'base_estimator__n_neighbors': [3, 5, 7]})",0.9470404984423676,0.7025599349857782,0.9453834334404245,0.6874466268146883

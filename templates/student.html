@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <title>Document</title>
+</head>
+<body style="background-color: aqua;">
+    <form method="post" action="{{ url_for('student') }}">
+      
+        <div id="div_id_course" class="form-group required">
+            <label for="id_course" class="control-label col-md-4  requiredField"><a class="text-light"> Course</a><span class="asteriskField">:</span> </label>
+            <div class="controls col-md-8 ">
+              <select id="id_course" class="form-control" name="course" style="margin-bottom: 10px">
+                <option selected>Choose...</option>
+                <option  value="CS">CS</option>
+                <option value="IS">IS</option>
+                <option value="MIS">MIS</option>
+              </select>
+            </div>
+        </div>
+        <div id="div_id_gre" class="form-group required">
+            <label for="id_gre" class="control-label col-md-4  requiredField"><a class="text-light"> GRE</a><span class="asteriskField">:</span> </label>
+            <div class="controls col-md-4 ">
+                <label for="id_gre_q" class="control-label col-md-4  requiredField"><a class="text-light"> Quants</a><span class="asteriskField">:</span> </label>
+                <input class="input-md textinput form-control" id="id_gre_q" name="gre_quants" placeholder="Your gre quants score" style="margin-bottom: 10px" type="number" min="130" max="170" required/>
+            </div>
+            <div class="controls col-md-4 ">
+                <label for="id_gre_v" class="control-label col-md-4  requiredField"><a class="text-light"> Verbal</a><span class="asteriskField">:</span> </label>
+                <input class="input-md textinput form-control" id="id_gre_v" name="gre_verbal" placeholder="Your gre verbal score" style="margin-bottom: 10px" type="number" min="130" max="170" required/>
+            </div>
+        </div>
+        <div id="div_id_english" class="form-group required">
+            <label for="id_english" class="control-label col-md-4  requiredField"><a class="text-light">English</a><span class="asteriskField">:</span> </label>
+            <div class="controls col-md-3 ">
+                <label class="radio"> <input type="radio" name="english_mode" id="id_toefl" value="toefl"  style="margin-bottom: 10px"><a class="text-light">TOEFL</a></label>
+                <label class="radio"> <input type="radio" name="english_mode" id="id_ielts" value="ielts"  style="margin-bottom: 10px"><a class="text-light">IELTS</a> </label>
+            </div>
+            <div class="controls col-md-5 ">
+                <label for="id_eng_score" class="control-label col-md-16  requiredField"><a class="text-light"> English test score (out of 9 for IELTS)</a><span class="asteriskField">:</span> </label>
+                <input class="input-md textinput form-control" id="id_eng_score" name="english_score" placeholder="Your TOEFL/IELTS score" style="margin-bottom: 10px" type="number" step="any" required />
+            </div>
+        </div>
+        <div id="div_id_undergrad_score" class="form-group required">
+            <label for="id_ugscore" class="control-label col-md-4  requiredField"><a class="text-light">Undergrad score</a><span class="asteriskField">:</span> </label>
+            <div class="controls col-md-3 ">
+                <label class="radio"> <input type="radio" name="ugmode" id="id_ugscore_cgpa" value="ugscore_cgpa"  style="margin-bottom: 10px"><a class="text-light">CGPA/Credit based</a></label>
+                <label class="radio"> <input type="radio" name="ugmode" id="id_ugscore_perc" value="ugscore_perc"  style="margin-bottom: 10px"><a class="text-light">Percentage</a> </label>
+            </div>
+                <div class="controls col-md-5 ">
+                    <label for="id_eng_score" class="control-label col-md-16  requiredField"><a class="text-light"> Undergrad GPA or Percentage</a><span class="asteriskField">:</span> </label>
+                <input class="input-md textinput textInput form-control" id="id_ugscore" name="ugscore" placeholder="Undergrad GPA or Percentage" style="margin-bottom: 10px" type="number" step="any" required/>
+            </div>
+        </div>
+        <div id="div_id_workex" class="form-group required">
+            <label for="id_workex" class="control-label col-md-4  requiredField"><a class="text-light"> Work Experience(months)</a><span class="asteriskField">:</span> </label>
+            <div class="controls col-md-8 ">
+                <input class="input-md textinput textInput form-control" id="id_workex" name="workex" placeholder="Work Experience(in months)" style="margin-bottom: 10px" type="number" />
+            </div>
+        </div>
+        <div id="div_id_papers" class="form-group required">
+            <label for="id_paper" class="control-label col-md-4  requiredField"><a class="text-light"> Technical Papers Published </a><span class="asteriskField">:</span> </label>
+            <div class="controls col-md-8 ">
+                 <select id="id_paper" class="form-control" name="papers_published" style="margin-bottom: 10px">
+                    <option value="0" selected>None</option>
+                    <option value="1">ONE</option>
+                    <option value="2">TWO</option>
+                    <option value="3">THREE</option>
+                  </select>
+            </div>
+        </div>
+        <div id="div_id_workex" class="form-group required">
+        <label for="SOP" class="control-label col-md-4  requiredField"><a class="text-light"> SOP</a><span class="asteriskField">:</span> </label>
+        <div class="controls col-md-8 ">
+        <input class="input-md textinput form-control" id="SOP" name="SOP" placeholder="Your SOP score" style="margin-bottom: 10px" type="number" min="0" max="5" step="0.5" required/>
+        </div>
+        </div>
+        <div id="div_id_workex" class="form-group required">
+            <label for="LOR" class="control-label col-md-4  requiredField"><a class="text-light"> LOR</a><span class="asteriskField">:</span> </label>
+            <div class="controls col-md-8 ">
+                <input class="input-md textinput form-control" id="LOR" name="LOR" placeholder="Your LOR score" style="margin-bottom: 10px" type="number" min="0" max="5" step="0.5" required/>
+            </div>
+        </div> 
+                <div id="div_id_university" class="form-group required">
+            <label for="id_university" class="control-label col-md-4  requiredField"><a class="text-light"> University of Choice </a><span class="asteriskField">:</span> </label>
+            <div class="controls col-md-8 ">
+                 <select id="id_university" class="form-control" name="university_choice" style="margin-bottom: 10px">
+                     {% for univ in universities %}
+                    <option value="{{univ.University}}">{{univ.University}}</option>
+                     {% endfor %}
+                  </select>
+            </div>
+        </div>
+        <div id="div_id_term" class="form-group required">
+            <label for="id_term" class="control-label col-md-4  requiredField"><a class="text-light"> Term applying </a><span class="asteriskField">:</span> </label>
+            <div class="controls col-md-8 ">
+                 <select id="id_term" class="form-control" name="term" style="margin-bottom: 10px">
+                    <option selected value="None">Choose Intake Term...</option>
+                    <option value="Spring">Spring 2021</option>
+                    <option value="Fall">Fall 2021</option>
+                  </select>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <div class="aab controls col-md-4 "></div>
+            <div class="controls col-md-8 ">
+                <input type="submit" name="shoot" value="Get Result" class="btn btn-primary btn btn-info" id="submit-id-signup" />
+            </div>
+        </div>
+    </form>
+</body>
+</html>

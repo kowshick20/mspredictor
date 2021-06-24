@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <title>Document</title>
+</head>
+<body style="background-color: aqua;">
+    {% block content %}
+<div class="table-responsive">
+  <table class="table">
+        <thead>
+    <tr  class="info">
+  
+      <th scope="col">University</th>
+      <th scope="col">GRE</th>
+      <th scope="col">English Lang Score</th>
+      <th scope="col">UG Score</th>
+      <th scope="col">Work Ex</th>
+      <th scope="col">Term Applying</th>
+      <th scope="col">SOP</th>
+      <th scope="col">LOR</th>
+      <th scope="col">Prediction Status</th>
+    </tr>
+    </thead>
+     <tbody>
+    {% for stud in data %}
+       <tr class="danger">
+
+          <td>{{stud.university_choice}}</td>
+          <td>{{stud.gre}}</td>
+          <td>{{stud.english_score}}</td>
+          <td>{{stud.ugscore}}</td>
+          <td>{{stud.workex}}</td>
+          <td>{{stud.term}}</td>
+          <td>{{stud.SOP}}</td>
+          <td>{{stud.LOR}}</td>
+          <td style="font-weight: bold">{{pred}}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+</div>
+<div>
+    <form method="post" action="">
+        <input type='hidden' name='data' value='{{data}}' />
+        <input type='hidden' name='pred' value='{{pred}}' />
+        <input type='hidden' name='username' value='{{username}}' />
+        <div class="form-group">
+                <div class="aab controls col-md-4 "></div>
+                <div class="controls col-md-8 ">
+                    <input type="submit" name="recommend" value="Get Recommendation" class="btn btn-primary btn btn-info" id="submit-id-signup" />
+                </div>
+            </div>
+    </form>
+</div>
+<div></div>
+{% if univ_pred != 'None' %}
+<div class="table-responsive">
+  <table class="table">
+        <thead>
+    <tr  class="info">
+      <th scope="col">University Ranking</th>
+      <th scope="col">University</th>
+      <th scope="col">Acceptance Percentage</th>
+    </tr>
+    </thead>
+     <tbody>
+    {% for pred in univ_pred %}
+       <tr style="background:white">
+          <td>{{pred.Ranking}}</td>
+          <td>{{pred.Universities}}</td>
+          <td style="font-weight: bold">{{pred.accept}} %</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endif %}
+{% endblock %}
+</body>
+</html>
